@@ -20,5 +20,4 @@ def main():
     arr.sort()
     result = []
     dfs(0, 0, 0, 0)
-
 main()
