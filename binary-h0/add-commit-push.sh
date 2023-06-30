@@ -111,7 +111,7 @@ do
             ;;
     esac
 done
-sleep 1
+
 echo ""
 echo -e "\033[1;34m==== 생성한 커밋 메시지 ====\033[0m"
 echo "[Solved Problem]
