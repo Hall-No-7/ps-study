@@ -1,0 +1,67 @@
+#include <string>
+#include <vector>
+#include <iostream>
+#include <cstring>
+
+using namespace std;
+
+int flag[31][31];
+
+int dirY[3] = {0,-1,-1};
+int dirX[3] = {1,0,1};
+
+int solution(int m, int n, vector<string> board) {
+    int answer = 0;
+    
+    while(true){
+        memset(flag, 0, 31 * 31 * sizeof(int));    
+        int check = 0;
+        
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
+            
+                if(board[i][j] == '0' || i == 0 || j == 0) continue;
+                
+                if(board[i - 1][j - 1] == board[i][j - 1]
+                  && board[i - 1][j - 1] == board[i - 1][j]
+                && board[i][j] == board[i - 1][j - 1]
+                ){
+                    flag[i][j] = 1;
+                    flag[i - 1][j] = 1;
+                    flag[i][j - 1] = 1;
+                    flag[i - 1][j - 1] = 1;
+                    check = 1;
+                }
+            }
+        }
+    
+    
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
+                if(flag[i][j]){
+                    board[i][j] = '0';
+                    answer++;  
+                }
+            }
+        }
+    
+        for(int i = 1; i < m; i++){
+            for(int j = 0;j < n; j++){
+                if(board[i][j] == '0'){
+                    for(int k = i; k > 0; k--){
+                        if(board[k - 1][j] == '0'){
+                            break;
+                        }
+                        board[k][j] = board[k - 1][j];
+                        board[k - 1][j] = '0';
+                    }
+                }
+            }
+        }
+        
+        if(check == 0) break;  
+
+    }
+    
+    return answer;
+}

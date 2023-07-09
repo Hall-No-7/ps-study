@@ -1,0 +1,55 @@
+#include <iostream>
+#include <map>
+#include <string>
+#include <vector>
+using namespace std;
+
+class Trie {
+   private:
+    map<string, Trie*> children;
+
+   public:
+    void insert(vector<string> word) {
+        Trie* now = this;
+        for (int i = 0; i < word.size(); i++) {
+            if (now->children[word[i]] == nullptr)
+                now->children[word[i]] = new Trie();
+            now = now->children[word[i]];
+        }
+    }
+
+    void print(int depth) {
+        for (auto& ch : children) {
+            for (int i = 0; i < depth; i++) {
+                cout << "--";
+            }
+            cout << ch.first << '\n';
+            ch.second->print(depth + 1);
+        }
+    }
+};
+
+int main() {
+    cin.tie(NULL);
+    ios_base::sync_with_stdio(false);
+
+    int cnt;
+    cin >> cnt;
+
+    Trie* trie = new Trie();
+
+    for (int i = 0; i < cnt; i++) {
+        int t;
+        cin >> t;
+        vector<string> v(t);
+
+        for (int j = 0; j < t; j++) {
+            cin >> v[j];
+        }
+
+        trie->insert(v);
+    }
+
+    trie->print(0);
+    return 0;
+}

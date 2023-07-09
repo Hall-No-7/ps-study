@@ -1,0 +1,62 @@
+startTime = list();    
+endTime = list();
+
+
+def convert(time):
+    tmp = time.replace(".", ":").split(":")
+        
+    answer = int(tmp[3]) + int(tmp[2]) * 1000 + int(tmp[1]) * 1000 * 60 + int(tmp[0]) * 1000 * 3600
+    
+    return answer
+
+def convertT(time):
+    
+    tmp = time[:-1].split(".")
+
+    if(len(tmp) == 1):
+        return int(tmp[0]) * 1000
+    else:
+        return int(tmp[0]) * 1000 + int(tmp[1])
+
+    
+def countMax():
+    maxAns = 0
+    
+    tmp = startTime + endTime
+    
+    tmp.sort()
+    
+    for i in range(len(tmp)):
+        answer = 0;
+        pivot = tmp[i]
+        
+        for j in range(len(startTime)):
+            if(startTime[j] > pivot + 999 or endTime[j] < pivot):
+                continue
+            else:
+                answer += 1
+        
+        if(answer > maxAns):
+            maxAns = answer
+    
+    return maxAns
+    
+def solution(lines):
+    answer = 0
+    
+    length = len(lines)
+        
+    for i in range(length):
+        tmp = lines[i].split(" ")
+
+        endTime.append(convert(tmp[1])) 
+        startTime.append(convert(tmp[1]) - convertT(tmp[2]) + 1)
+
+    # for i in range(length):
+    #     print(startTime[i], endTime[i])
+        
+    answer = countMax()
+        
+    return answer
+
+
