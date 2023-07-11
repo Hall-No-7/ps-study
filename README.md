@@ -5,16 +5,6 @@
 2. 기업 코딩테스트 기출 문제 정하고 풀기
 3. 알고리즘 주제 정하고 2문제 이상 풀기
 
-## [1주차 스터디 주제]
-### 2018 kakao blind recruitment
-1. 다트 게임 
-2. 캐시 
-3. 프렌즈4블록 
-4. 추석 트래픽 
-
-### 알고리즘 - Trie
-- 2문제 이상
-
 ## [2주차 스터디 주제]
 ### 2018 kakao blind recruitment
 1. [3차] 압축
@@ -25,3 +15,19 @@
 
 ### 알고리즘 - Union Find (Disjoint Set)
 - 2문제 이상
+
+
+---
+<details>
+  <summary>이전 주차</summary>
+  
+  ## [1주차 스터디 주제]
+  ### 2018 kakao blind recruitment
+  1. 다트 게임 
+  2. 캐시 
+  3. 프렌즈4블록 
+  4. 추석 트래픽 
+  
+  ### 알고리즘 - Trie
+  - 2문제 이상
+</details>
