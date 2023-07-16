@@ -17,6 +17,6 @@ fi
 mkdir $1
 touch $1/$1.py $1/input.txt
 
-echo -e "from sys import stdin \ninput = (lambda: open(\"/Volumes/Program/ps-study/dalcom/$1/input.txt\", \"rt\").readline().strip())" > $1/$1.py
+echo -e "from sys import stdin as input\ninput = open(\"/Volumes/Program/ps-study/dalcom/$1/input.txt\", \"rt\")" > $1/$1.py
 
 echo '완료!' 
