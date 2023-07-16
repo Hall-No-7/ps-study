@@ -86,10 +86,6 @@ string solution(string m, vector<string> musicinfos) {
         }
         // 곡의 사이즈가 작을때
         else {
-            int currentsongsize = currentmelody.size();
-            for (int i = 0; i < currentsongsize; i++) {
-                currentmelody += currentmelody[i];
-            }
             cout << endl;
             if (currentmelody.find(song) != std::string::npos) {
                 cout << "found" << endl;
