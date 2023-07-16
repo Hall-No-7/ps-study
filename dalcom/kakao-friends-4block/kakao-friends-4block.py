@@ -68,29 +68,6 @@ def solution(m, n, board):
     return answer
 
 
-def solution(m, n, board):
-    answer = 0
-    board = [list(board[i]) for i in range(len(board))]
-    visited = [[False for _ in range(n)] for _ in range(m)]
-    done = False
-
-    while done == False:
-        done = True
-        for i, row in enumerate(board):
-            for j, val in enumerate(row):
-                if val == " ":
-                    continue
-                res = check(visited, board, (i, j), m, n)
-                if res != 0:
-                    done = False
-                answer += res
-
-        if done == False:
-            erase(board, visited, m, n)
-
-    return answer
-
-
 n, m = map(int, input.readline().split())
 board = []
 for _ in range(m):
