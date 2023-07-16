@@ -10,7 +10,6 @@ struct fileName
     string head;
     int number;
     int idx;
-    string tail;
 };
 vector<fileName> v;
 
@@ -39,7 +38,6 @@ vector<string> solution(vector<string> files)
     {
         string s = files[i];
         string head = "";
-        string tail = "";
         string num = "";
         int number;
         int j;
@@ -55,10 +53,7 @@ vector<string> solution(vector<string> files)
                 break;
             num += s[j];
         }
-        for (; j < s.size(); j++)
-        {
-            tail += s[j];
-        }
+
         for (char &c : head)
         {
             c = tolower(c);
@@ -68,8 +63,6 @@ vector<string> solution(vector<string> files)
         f.head = head;
         f.number = number;
         f.idx = i;
-        f.tail = tail;
-        cout << head << " " << number << " " << tail << endl;
         v.push_back(f);
     }
     sort(v.begin(), v.end(), compare);
