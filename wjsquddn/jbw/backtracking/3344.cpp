@@ -1,3 +1,5 @@
+// 이건 백트랙킹 문제가 아닌것 같다.
+// 그냥 규칙만 알면 간단히 풀 수 있는 문제
 #include <cstdio>
 using namespace std;
 int main() {
@@ -40,9 +42,7 @@ int main() {
                 printf("%d\n", i);
             }
         }
-
         printf("%d\n", 1);
-
         printf("%d\n", 3);
     } else {
         for (int i = 1; i <= (n / 2); i++) {
