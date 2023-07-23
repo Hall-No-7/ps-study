@@ -33,7 +33,6 @@ def solution(food_times, k):
             p = np
 
         cycle_cnt += cnt
-    print(check, k)
     for idx, val in enumerate(check):
         if val:
             continue
@@ -44,6 +43,3 @@ def solution(food_times, k):
         k -= 1
 
     return answer
-
-
-solution([3, 1, 1, 1, 2, 4, 3], 12)
