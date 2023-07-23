@@ -13,16 +13,20 @@
 3. 알고리즘 주제 정하고 2문제 이상 풀기
 4. 문제 해결 시도 안할시 형벌에 처함
 
+</br>
+
 ## [3주차 스터디 주제]
 ### 2019 kakao blind recruitment
-1. 실패율
-2. 오픈채팅방
-3. 후보키
-4. 길 찾기 게임
-5. 무지의 먹방 라이브
-
-### 알고리즘 - BackTracking
+1. 매칭 점수
+2. 블록 게임
+### 2020 kakao blind recruitment
+1. 괄호 변환
+2. 문자열 압축
+3. 자물쇠와 열쇠
+### 알고리즘 - Segment Tree
 - 2문제 이상
+
+</br>
 
 ---
 <details>
@@ -50,4 +54,18 @@
 
   ### 알고리즘 - Union Find (Disjoint Set)
   - 2문제 이상
+
+</br>
+
+  ## [3주차 스터디 주제]
+  ### 2019 kakao blind recruitment
+  1. 실패율
+  2. 오픈채팅방
+  3. 후보키
+  4. 길 찾기 게임
+  5. 무지의 먹방 라이브
+
+  ### 알고리즘 - BackTracking
+  - 2문제 이상
+
 </details>
