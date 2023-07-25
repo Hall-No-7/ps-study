@@ -10,8 +10,6 @@ def get_link_score(links, relationships):
 
 
 def solution(word, pages):
-    answer = 0
-    
     urls = []
     relationships = defaultdict(lambda: { "base": 0, "out_link": 0, "links": set() })
     
