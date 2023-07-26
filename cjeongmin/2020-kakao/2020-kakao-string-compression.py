@@ -10,7 +10,7 @@ def compression(s, length):
             cnt = 1
             pattern = s[i:i+length]
     return ret + f"{cnt if cnt > 1 else ''}{pattern}"
-
+    
 
 def solution(s):
-    return min(map(lambda x: len(compression(s, x)), range(1, len(s) // 2 + 1)))
+    return min(list(map(lambda x: len(compression(s, x)), range(1, len(s) // 2 + 1))) + [len(s)])
