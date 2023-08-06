@@ -9,16 +9,6 @@ using namespace std;
 
 set<tuple<int, int, int>> building;
 
-bool cmp(tuple<int, int, int> &t1, tuple<int, int, int> &t2) {
-    if (get<0>(t1) == get<0>(t2)) {
-        if (get<1>(t1) == get<1>(t2)) {
-            return get<2>(t1) < get<2>(t2);
-        } else
-            return get<1>(t1) < get<1>(t2);
-    } else
-        return get<0>(t1) < get<0>(t2);
-}
-
 bool InstallItem(int col, int row, int type) {
     if (type == 0) {  // 기둥
         if (row == 0) // 바닥 설치
