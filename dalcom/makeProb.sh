@@ -6,7 +6,7 @@ then
 	exit
 fi
 
-cd /Volumes/Program/ps-study/dalcom
+cd /Volumes/Program/ps-study/dalcom/boj
 
 if [ -d $1 ]
 then 
@@ -17,6 +17,6 @@ fi
 mkdir $1
 touch $1/$1.py $1/input.txt
 
-echo -e "from sys import stdin as input\ninput = open(\"/Volumes/Program/ps-study/dalcom/$1/input.txt\", \"rt\")" > $1/$1.py
+echo -e "from sys import stdin as input\ninput = open(\"/Volumes/Program/ps-study/dalcom/boj/$1/input.txt\", \"rt\")" > $1/$1.py
 
 echo '완료!' 
