@@ -1,4 +1,3 @@
-#include <algorithm>
 #include <iostream>
 #include <set>
 #include <string>
@@ -12,7 +11,9 @@ bool cmp(const pair<string, int> &p1, const pair<string, int> &p2) {
     return p1.first.length() < p2.first.length();
 }
 
-vector<string> solution(vector<string> orders, vector<int> course) {
+int main() {
+    vector<string> orders = {"ABCFG", "AC", "CDE", "ACDE", "BCFG", "ACDEH"};
+    vector<int> course = {2, 3, 4};
     vector<set<char>> tmp;
     vector<pair<string, int>> answer;
     for (auto &menus : orders) {
@@ -68,5 +69,4 @@ vector<string> solution(vector<string> orders, vector<int> course) {
 
     for (int i = 0; i < answer.size(); i++)
         cout << answer[i].first << " " << answer[i].second << endl;
-    return vector<string>();
 }
