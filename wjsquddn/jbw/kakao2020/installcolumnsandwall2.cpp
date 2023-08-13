@@ -20,12 +20,14 @@ bool checkinstall(int x, int y, int a) {
 bool checkdelete(int x, int y, int a) {
     board[x][y][a] = 0;
     if (a == 0) {
-        if (y < N && arr[x][y + 1][0] && !install_item(x, y + 1, 0)) return false;
-
-        // 위에 보 있을 때, 설치 가능?
-        if (y < N && arr[x][y + 1][1] && !install_item(x, y + 1, 1)) return false;
-        if (x > 0 && y < N && arr[x - 1][y + 1][1] && !install_item(x - 1, y + 1, 1)) return false;
+        if (y < N && board[x][y + 1][0] && !checkinstall(x, y + 1, 0)) return false;
+        if (y < N && board[x][y + 1][1] && !checkinstall(x, y + 1, 1)) return false;
+        if (x > 0 && y < N && board[x - 1][y + 1][1] && !checkinstall(x - 1, y + 1, 1)) return false;
     } else {
+        if (board[x][y][0] && !checkinstall(x, y, 0)) return false;
+        if (x < N && board[x + 1][y][0] && !checkinstall(x + 1, y, 0)) return false;
+        if (x > 0 && board[x - 1][y][1] && !checkinstall(x - 1, y, 1)) return false;
+        if (x < N && board[x + 1][y][1] && !checkinstall(x + 1, y, 1)) return false;
     }
     return true;
 }

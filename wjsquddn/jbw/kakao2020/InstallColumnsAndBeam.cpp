@@ -20,20 +20,22 @@ void init(int n) {
 bool checkinsert(int x, int y, int a) {
     // 기등
     if (a == 0) {
-        if (y == 0 || (x != 0 && board[y][x - 1] == 1) || (y != 0 && board[y - 1][x] == 0) || (board[y][x] == 1)) {
+        if (y == 0) {
             return true;
-        } else {
-            return false;
         }
+        if (x != 0 && board[y][x - 1] == 1) return true;
+        if (y != 0 && board[y - 1][x] == 0) return true;
+        if (board[y][x] == 1) return true;
     }
     // 보
     else {
-        if ((y != 0 && board[y - 1][x] == 0) || (x != N && y != 0 && board[y - 1][x + 1] == 0) || ((x != 0 && board[y][x - 1] == 1) && (x != N && board[y][x + 1] == 1))) {
+        if (y != 0 && board[y - 1][x] == 0) {
             return true;
-        } else {
-            return false;
         }
+        if (x != N && y != 0 && board[y - 1][x + 1] == 0) return true;
+        if ((x != 0 && board[y][x - 1] == 1) && (x != N && board[y][x + 1] == 1)) return true;
     }
+    return false;
 }
 bool checkdelete(int x, int y, int a) {
     // 기둥
