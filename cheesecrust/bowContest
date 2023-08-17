@@ -1,0 +1,56 @@
+class Solution {
+    static int N;
+    static int[] answer = new int[11];
+    static int[] ryanScores = new int[11];
+    
+    static int[] apeachScores;
+    static int max = Integer.MIN_VALUE;
+    
+    public int ryanWin(){
+        int result = 0;
+        
+        for(int i = 0; i < 11; i++){
+            if(apeachScores[i] == 0 && ryanScores[i] == 0) continue;
+            
+            if(apeachScores[i] >= ryanScores[i])
+                result -= (10 - i);
+            else 
+                result += (10 - i);
+        }
+        
+        if(result > 0) return result;
+        return -1;
+    }
+    
+    public void searchScore(int cnt){
+        if(cnt == N){
+            int diff = ryanWin();
+            
+            if(diff >= max) {
+                max = diff;
+                answer = ryanScores.clone();
+            }
+            
+            return;
+        }
+        
+        for(int i = 0; i < 11 && ryanScores[i] <= apeachScores[i]; i++){ // 좀 더 똑똑하게 돌 수 있지 않을까???
+            ryanScores[i] += 1;
+            searchScore(cnt + 1);
+            ryanScores[i] -= 1;
+        }
+    }
+    
+    public int[] solution(int n, int[] info) {
+        N = n;
+        apeachScores = info;
+        searchScore(0);
+
+        if(max == -1){
+            answer = new int [1];
+            answer[0] = -1;
+        }
+        
+        return answer;
+    }
+}
