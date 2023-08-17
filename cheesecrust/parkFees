@@ -1,0 +1,68 @@
+import java.util.*;
+
+class Solution {
+    static int baseTime;
+    static int baseFee;
+    static int unitTime;
+    static int unitFee;
+    
+    public List<Integer> solution(int[] fees, String[] records) {
+
+        
+        baseTime = fees[0];
+        baseFee = fees[1];
+        unitTime = fees[2];
+        unitFee = fees[3];
+        
+        HashMap<String, Integer> map = new HashMap<String, Integer>();
+        
+        for(String record : records){
+            String[] recordArr = record.split(" ");
+            
+            int time = convertTime(recordArr[0]);
+            String carNum = recordArr[1];
+            String carMove = recordArr[2];
+            
+            if(carMove.equals("IN") && map.get(carNum) == null){ // 처음 들어오는 차
+                map.put(carNum, 1439 - time); // 24 * 60 - 1 = 1439
+                
+            }else if(carMove.equals("IN")){ // 두번째 들어오는 차
+                int tmp = map.get(carNum);
+                map.replace(carNum, tmp + 1439 - time);
+                
+            }else if(carMove.equals("OUT")){ // 나가는 차
+                int tmp = map.get(carNum);
+                map.replace(carNum, tmp - 1439 + time);
+            } 
+        }
+        
+        List<String> keySet = new ArrayList<>(map.keySet());
+        List<Integer> answer = new ArrayList<>();
+        Collections.sort(keySet);
+        
+        for(int i = 0; i < keySet.size(); i++){
+            String key = keySet.get(i);
+            int time = map.get(key);
+            
+            int fee = baseFee;
+            System.out.println(Math.ceil( (float) (time - baseTime) / (float)unitTime));
+            System.out.println(( (time - baseTime) / unitTime));
+            
+            if(time > baseTime) fee +=(int) Math.ceil( (float)(time - baseTime) /(float) unitTime) * unitFee;
+            
+            answer.add(fee);
+            
+        }
+        
+        // for(int i = 0; i < answer.size(); i++){
+        //     System.out.println(answer.get(i));
+        // }
+        return answer;
+    }
+    
+    public int convertTime(String time){
+        String[] timeArr = time.split(":");
+        
+        return Integer.parseInt(timeArr[0]) * 60 + Integer.parseInt(timeArr[1]); 
+    }
+}
