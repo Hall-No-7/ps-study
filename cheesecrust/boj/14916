@@ -1,0 +1,47 @@
+package org.example;
+
+import java.io.*;
+import java.util.StringTokenizer;
+
+public class Main {
+    static Integer small = 2;
+    static Integer big = 5;
+    static BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+    public static void main(String[] args) throws IOException {
+        Integer change = input();
+
+        greedy(change);
+
+        output();
+    }
+
+    public static Integer input() throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+         return Integer.parseInt(st.nextToken());
+    }
+
+    public static void output() throws IOException {
+        bw.flush();
+        bw.close();
+    }
+
+    public static void greedy(Integer change) throws IOException {
+        int result = Integer.MAX_VALUE;
+        int cnt = change / big;
+
+        for(int i = 0; i <= cnt; i++){
+            Integer tmp = change - big * i;
+            if(tmp % small == 0 && result > (i + tmp / small)){
+                result = (i + tmp / small);
+            }
+        }
+
+        if(result == Integer.MAX_VALUE) result = -1;
+
+        bw.write(Integer.toString(result));
+    }
+}
