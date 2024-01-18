@@ -1,0 +1,47 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        StringTokenizer st;
+
+        int T = Integer.parseInt(br.readLine());
+
+        for(int i = 0; i < T; i++){
+            int N = Integer.parseInt(br.readLine());
+            st = new StringTokenizer(br.readLine());
+
+            int[] prices = new int[N];
+
+            int max;
+            long result = 0;
+
+            for(int j = 0; j < N; j++){
+                prices[j] = Integer.parseInt(st.nextToken());
+            }
+
+            // 가장 마지막을 큰 값으로 설정하기
+            max = prices[N - 1];
+
+            for(int j = N - 2; j >= 0; j--){
+                if(max >= prices[j]){
+                    result += max - prices[j];
+                }else{
+                    max = prices[j];
+                }
+            }
+
+            bw.write(Long.toString(result));
+            bw.write("\n");
+        }
+
+        bw.flush();
+        bw.close();
+    }
+
+}
