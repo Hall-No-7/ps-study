@@ -1,0 +1,65 @@
+package org.example;
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+
+        String X = br.readLine();
+
+        Stack<Character> stack = new Stack<>();
+
+        int value = 1;
+        int result = 0;
+        for(int i = 0; i < X.length(); i++){
+            char cur = X.charAt(i);
+
+            if(stack.empty() && (cur == ')' || cur == ']') ){
+                System.out.println(0);
+                return;
+            }
+
+            if(cur == '('){
+                stack.push(cur);
+                value *= 2;
+            }else if (cur == '[') {
+                stack.push(cur);
+                value *= 3;
+            }else if (cur == ')') {
+                if(stack.peek() != '('){
+                    System.out.println(0);
+                    return;
+                }else if (X.charAt(i - 1) == '('){
+                    result += value;
+                }
+                value /= 2;
+                stack.pop();
+            }else if (cur == ']'){
+                if(stack.peek() != '['){
+                    System.out.println(0);
+                    return;
+                }else if (X.charAt(i - 1) == '['){
+                    result += value;
+                }
+                value /= 3;
+                stack.pop();
+            }else{
+                System.out.println(0);
+                return;
+            }
+        }
+
+        if (!stack.empty()){
+            System.out.println(0);
+            return;
+        }
+
+        System.out.println(result);
+
+
+    }
+}
+
